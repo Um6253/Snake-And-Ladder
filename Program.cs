@@ -1,49 +1,44 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Numerics;
-using System;
 
-namespace snake_and_ladder
+namespace Snake_and_Ladder
 {
     internal class Program
     {
-
         static void Main(string[] args)
         {
-            int player1 = 0;
-            Random rand = new Random();
-            int random_number = rand.Next(6);
-            random_number++;
-            Console.WriteLine($"The number on the dice is {random_number}");
-            int option = rand.Next(3);
-            switch (option)
+            int[] num = { 1, 2, 3, 4, 5, 4, 2, 44, 5, 1, 3, 4, 6, 3 };
+            List<int> k = new List<int>();
+
+            foreach (int i in num)
             {
-                case 0:
-                    Console.WriteLine("No move");
-                    break;
-                case 1:
-                    Console.WriteLine("It is a ladder");
-                    player1 += random_number;
-                    break;
-                case 2:
-                    Console.WriteLine("It is a snake");
-                    if (random_number > player1)
-                    {
-                        player1 = 0;
-                    }
-                    else
-                    {
-                        player1 -= random_number;
-                    }
-                    break;
+                if (i > 1)
+                {
+                    k.Add(i);
+                    Console.WriteLine(i + "=" + CountOccurrences(num, i));
+                    Console.ReadLine();
+
+                }
             }
-            Console.Write("player postiton is : ");
-            Console.WriteLine(player1);
-            Console.ReadLine();
+        }
+                   
 
+        private static int CountOccurrences(int[] array, int number)
+        {
+            int count = 0;
 
+            foreach (int element in array)
+            {
+                if (element == number)
+                {
+                    count++;
+                }
+            }
 
+            return count;
         }
     }
 }
