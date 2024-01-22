@@ -10,7 +10,12 @@ namespace Snake_And_Ladder
     {
         static void Main(string[] args)
         {
-            int inital_positon = 0;
+            Random rnm = new Random();
+            int random = rnm.Next(6);
+            Console.WriteLine(random);
+            Console.ReadLine();
+
+
         }
     }
 }
